@@ -13,7 +13,7 @@ const translations = {
     price: 'Presyo', productCount: 'produkto', browse: 'Tingnan ang mga produkto', viewAll: 'Tingnan lahat',
     allMerchants: 'Lahat ng tindahan', default: 'Default', priceAsc: 'Presyo ↑', priceDesc: 'Presyo ↓',
     ratingAsc: 'Rating ↑', ratingDesc: 'Rating ↓', salesAsc: 'Benta ↑', salesDesc: 'Benta ↓',
-    home: 'Bago', allProducts: 'Mga patok', pool: 'Katalogo', newProducts: 'Bago', hotProducts: 'Patok', productLibrary: 'Katalogo',
+    home: 'Bagong Uso', allProducts: 'Mga patok', pool: 'Katalogo', newProducts: 'Bagong Uso', hotProducts: 'Patok', productLibrary: 'Katalogo',
     loading: 'Nilo-load ang mga produkto...', retry: 'Subukan muli', datasetLoadError: 'Hindi ma-load ang data para sa seksiyong ito.',
     datasetEmpty: 'Walang produkto sa seksiyong ito.', noResults: 'Walang nakitang produkto', tryAgain: 'Subukan ang ibang paghahanap o filter',
     loadMore: 'Magpakita pa', seller: 'Tindahan', row: 'Product ID', allCategories: 'Lahat ng kategorya', allSubcategories: 'Lahat ng subcategory',
@@ -28,7 +28,7 @@ const translations = {
     price: 'Price', productCount: 'products', browse: 'Browse products',
     viewAll: 'View all', allMerchants: 'All stores', default: 'Default', priceAsc: 'Price ↑', priceDesc: 'Price ↓',
     ratingAsc: 'Rating ↑', ratingDesc: 'Rating ↓', salesAsc: 'Sales ↑', salesDesc: 'Sales ↓',
-    home: 'New', allProducts: 'Trending', pool: 'Catalog', newProducts: 'New', hotProducts: 'Trending', productLibrary: 'Catalog',
+    home: 'New Trends', allProducts: 'Trending', pool: 'Catalog', newProducts: 'New Trends', hotProducts: 'Trending', productLibrary: 'Catalog',
     loading: 'Loading products...', retry: 'Retry', datasetLoadError: 'This section could not be loaded.',
     datasetEmpty: 'There are no products in this section.', noResults: 'No products found', tryAgain: 'Try another search or filter',
     loadMore: 'Show more', seller: 'Store', row: 'Product ID', allCategories: 'All categories', allSubcategories: 'All subcategories',
@@ -42,7 +42,7 @@ const translations = {
     price: '售价', productCount: '款商品', browse: '进入选品',
     viewAll: '查看全部', allMerchants: '全部商家', default: '默认', priceAsc: '价格↑', priceDesc: '价格↓',
     ratingAsc: '评分↑', ratingDesc: '评分↓', salesAsc: '销量↑', salesDesc: '销量↓',
-    home: '新品', allProducts: '爆品', pool: '商品库', newProducts: '新品', hotProducts: '爆品', productLibrary: '商品库',
+    home: '趋势新品', allProducts: '爆品', pool: '商品库', newProducts: '趋势新品', hotProducts: '爆品', productLibrary: '商品库',
     loading: '正在加载商品...', retry: '重试', datasetLoadError: '当前栏目数据加载失败。', datasetEmpty: '当前栏目暂无商品。',
     noResults: '没有找到相关商品', tryAgain: '试试其他关键词或筛选条件', loadMore: '加载更多', seller: '所属商家',
     row: '商品 ID', allCategories: '全部一级类目', allSubcategories: '全部二级类目', rating: '评分', sales: '销量', easyProduct: '轻松获取商品',
@@ -482,7 +482,7 @@ function App() {
   const [datasetData, setDatasetData] = useState(() => Object.fromEntries(
     DATASETS.map(dataset => [dataset.key, { products: [], error: '' }])
   ));
-  const [activeDataset, setActiveDataset] = useState('new');
+  const [activeDataset, setActiveDataset] = useState('hot');
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
