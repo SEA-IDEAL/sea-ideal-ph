@@ -949,6 +949,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      position: relative;
       animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -989,6 +990,7 @@
       position: absolute;
       top: 16px;
       right: 16px;
+      z-index: 10;
       width: 36px;
       height: 36px;
       border-radius: 50%;
@@ -1248,6 +1250,6 @@
     });
   </script>
 
-  <script type="text/babel" data-presets="react-classic" src="app.jsx?v=20261009-ph-subcategories"></script>
+  <script type="text/babel" data-presets="react-classic" src="app.jsx?v=20261009-ph-sticky-close"></script>
 </body>
 </html>

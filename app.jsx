@@ -440,6 +440,9 @@ function ProductModal({ product, onClose, t }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose} aria-label={t.close}>
+          <IconClose />
+        </button>
         <div className="modal-scroll">
           <div className="modal-handle"></div>
           <div className="modal-image-wrap" style={{
@@ -457,9 +460,6 @@ function ProductModal({ product, onClose, t }) {
                 <path d="M16 10a4 4 0 0 1-8 0"/>
               </svg>
             )}
-            <button className="modal-close" onClick={onClose} aria-label={t.close}>
-              <IconClose />
-            </button>
           </div>
           <div className="modal-body">
             <div className="modal-shop">{product.shop || t.unknownShop}</div>
