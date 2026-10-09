@@ -6,6 +6,69 @@ const DATASETS = [
   { key: 'library', path: 'assets/网站数据 - 商品库.csv', labelKey: 'productLibrary' }
 ];
 
+const secondaryCategoryNames = {
+  fil: {
+    '保健食品': 'Mga suplementong pangkalusugan', '鼻子口腔护理': 'Pangangalaga sa ilong at bibig',
+    '厨房电器': 'Mga appliance sa kusina', '厨房用具': 'Mga gamit sa kusina', '床上用品': 'Kagamitan sa kama',
+    '电气设备': 'Kagamitang elektrikal', '非处方药品': 'Gamot na walang reseta', '功能包袋': 'Mga functional bag',
+    '护发造型': 'Pangangalaga at pag-istilo ng buhok', '护肤': 'Pangangalaga sa balat', '花园用品': 'Mga gamit sa hardin',
+    '即食食品': 'Handang kainin', '家居收纳': 'Imbakan sa bahay', '家居织物': 'Tela para sa bahay',
+    '家庭护理用品': 'Mga gamit sa pangangalaga ng bahay', '家庭清洁用品': 'Mga panlinis ng bahay',
+    '建筑用品': 'Mga materyales sa gusali', '健身设备': 'Kagamitang pang-fitness', '节日派对用品': 'Mga gamit sa pista at party',
+    '口腔鼻腔护理': 'Pangangalaga sa bibig at ilong', '零食': 'Meryenda', '露营徒步装备': 'Kagamitan sa camping at hiking',
+    '旅行箱': 'Maleta', '猫狗保健': 'Kalusugan ng pusa at aso', '猫狗美容': 'Grooming ng pusa at aso',
+    '猫狗配饰': 'Accessories ng pusa at aso', '猫狗食品': 'Pagkain ng pusa at aso', '猫砂除便': 'Cat litter at paglilinis',
+    '美容': 'Pampaganda', '美容、个护电器': 'Beauty at personal care appliances', '美容电器': 'Beauty appliances',
+    '美容护肤': 'Beauty at skin care', '美妆': 'Makeup', '沐浴身体护理': 'Paligo at pangangalaga sa katawan',
+    '男士上衣': 'Pantaas ng lalaki', '男童服饰': 'Damit ng batang lalaki', '男童服装': 'Kasuotan ng batang lalaki',
+    '男鞋': 'Sapatos ng lalaki', '内部配件': 'Mga piyesang panloob', '女包': 'Bag ng babae',
+    '女士内衣': 'Underwear ng babae', '女士睡衣家居服': 'Pambabaeng pantulog at pambahay', '女童鞋': 'Sapatos ng batang babae',
+    '女鞋': 'Sapatos ng babae', '女性私密处护理': 'Intimate care ng babae', '女性卫生': 'Kalinisan ng babae',
+    '平板配件': 'Tablet accessories', '日常家居': 'Pang-araw-araw na gamit sa bahay', '生活电器': 'Mga appliance sa bahay',
+    '室内家具': 'Muwebles sa loob ng bahay', '室内配饰': 'Dekorasyon sa loob ng bahay', '收纳整理': 'Imbakan at pag-aayos',
+    '手机配件': 'Mobile phone accessories', '手足指甲护理': 'Pangangalaga sa kamay, paa at kuko',
+    '通用配饰': 'Pangkalahatang accessories', '头部护理与造型': 'Pangangalaga at pag-istilo ng buhok',
+    '五金工具': 'Hardware at tools', '洗车保养': 'Paglilinis at pag-aalaga ng sasakyan',
+    '洗浴与身体护理': 'Paligo at pangangalaga sa katawan', '相机摄影': 'Camera at photography',
+    '香水': 'Pabango', '香水香氛': 'Pabango at fragrance', '鞋配件': 'Accessories ng sapatos',
+    '休闲户外': 'Libangan sa labas', '眼耳护理': 'Pangangalaga sa mata at tainga',
+    '眼镜耳朵护理': 'Salamin at pangangalaga sa tainga', '音视频设备': 'Audio at video equipment',
+    '饮料': 'Inumin', '婴儿护理': 'Pangangalaga sa sanggol', '营养保健': 'Nutrisyon at wellness',
+    '运动服饰': 'Kasuotang pang-sports', '运动户外配件': 'Sports at outdoor accessories', '照明灯具': 'Mga ilaw',
+    '智能穿戴': 'Smart wearables', '主食调料': 'Pangunahing pagkain at pampalasa',
+    '主食与烹饪调味': 'Pangunahing pagkain at panimpla', '装饰': 'Dekorasyon', '装饰摆件': 'Mga dekorasyong display'
+  },
+  en: {
+    '保健食品': 'Health Supplements', '鼻子口腔护理': 'Nasal & Oral Care', '厨房电器': 'Kitchen Appliances',
+    '厨房用具': 'Kitchenware', '床上用品': 'Bedding', '电气设备': 'Electrical Equipment',
+    '非处方药品': 'Over-the-Counter Medicine', '功能包袋': 'Functional Bags', '护发造型': 'Hair Care & Styling',
+    '护肤': 'Skin Care', '花园用品': 'Garden Supplies', '即食食品': 'Ready-to-Eat Food',
+    '家居收纳': 'Home Storage', '家居织物': 'Home Textiles', '家庭护理用品': 'Household Care Supplies',
+    '家庭清洁用品': 'Household Cleaning Supplies', '建筑用品': 'Building Supplies', '健身设备': 'Fitness Equipment',
+    '节日派对用品': 'Holiday & Party Supplies', '口腔鼻腔护理': 'Oral & Nasal Care', '零食': 'Snacks',
+    '露营徒步装备': 'Camping & Hiking Gear', '旅行箱': 'Luggage', '猫狗保健': 'Cat & Dog Health',
+    '猫狗美容': 'Cat & Dog Grooming', '猫狗配饰': 'Cat & Dog Accessories', '猫狗食品': 'Cat & Dog Food',
+    '猫砂除便': 'Cat Litter & Waste Care', '美容': 'Beauty', '美容、个护电器': 'Beauty & Personal Care Appliances',
+    '美容电器': 'Beauty Appliances', '美容护肤': 'Beauty & Skin Care', '美妆': 'Makeup',
+    '沐浴身体护理': 'Bath & Body Care', '男士上衣': "Men's Tops", '男童服饰': "Boys' Apparel",
+    '男童服装': "Boys' Clothing", '男鞋': "Men's Shoes", '内部配件': 'Internal Accessories',
+    '女包': "Women's Bags", '女士内衣': "Women's Underwear", '女士睡衣家居服': "Women's Sleepwear & Loungewear",
+    '女童鞋': "Girls' Shoes", '女鞋': "Women's Shoes", '女性私密处护理': "Women's Intimate Care",
+    '女性卫生': "Women's Hygiene", '平板配件': 'Tablet Accessories', '日常家居': 'Everyday Home Supplies',
+    '生活电器': 'Home Appliances', '室内家具': 'Indoor Furniture', '室内配饰': 'Interior Accessories',
+    '收纳整理': 'Storage & Organization', '手机配件': 'Mobile Phone Accessories',
+    '手足指甲护理': 'Hand, Foot & Nail Care', '通用配饰': 'General Accessories',
+    '头部护理与造型': 'Hair Care & Styling', '五金工具': 'Hardware & Tools', '洗车保养': 'Car Cleaning & Care',
+    '洗浴与身体护理': 'Bath & Body Care', '相机摄影': 'Cameras & Photography', '香水': 'Perfume',
+    '香水香氛': 'Perfume & Fragrance', '鞋配件': 'Shoe Accessories', '休闲户外': 'Outdoor Recreation',
+    '眼耳护理': 'Eye & Ear Care', '眼镜耳朵护理': 'Eyewear & Ear Care', '音视频设备': 'Audio & Video Equipment',
+    '饮料': 'Beverages', '婴儿护理': 'Baby Care', '营养保健': 'Nutrition & Wellness',
+    '运动服饰': 'Sportswear', '运动户外配件': 'Sports & Outdoor Accessories', '照明灯具': 'Lighting',
+    '智能穿戴': 'Smart Wearables', '主食调料': 'Staples & Seasonings',
+    '主食与烹饪调味': 'Staples & Cooking Seasonings', '装饰': 'Decor', '装饰摆件': 'Decorative Objects'
+  }
+};
+
 const translations = {
   fil: {
     title: 'Pagpili ng Produkto sa Pilipinas', products: 'produkto', merchants: 'tindahan', fromMerchants: 'Mula sa',
@@ -20,7 +83,8 @@ const translations = {
     rating: 'Rating', sales: 'Nabenta', easyProduct: 'Madaling kunin ang produkto',
     requestSample: 'Humingi ng sample', addLink: 'Idagdag ang link', linkUnavailable: 'Walang available na link',
     unknownProduct: 'Produktong walang pangalan', unknownShop: 'Hindi tukoy na tindahan', close: 'Isara',
-    categoryNames: { '保健': 'Kalusugan', '健康保健': 'Kalusugan', '宠物用品': 'Pet supplies', '厨房餐饮': 'Kusina at kainan', '儿童时尚': 'Moda ng bata', '工具五金': 'Tools at hardware', '家具': 'Muwebles', '家用电器': 'Home appliances', '家用纺织': 'Home textiles', '家装建材': 'Home improvement', '居家日用': 'Mga gamit sa bahay', '美妆个护': 'Beauty at personal care', '美妆与个护': 'Beauty at personal care', '母婴用品': 'Ina at sanggol', '男士内衣': 'Panlalaking underwear', '女士内衣': 'Pambabaeng underwear', '女装与女士内衣': 'Damit at underwear ng babae', '汽车与摩托车': 'Sasakyan at motorsiklo', '食品饮料': 'Pagkain at inumin', '手机数码': 'Mobile at electronics', '手机与数码': 'Mobile at electronics', '箱包': 'Bag', '鞋靴': 'Sapatos', '运动户外': 'Sports at outdoor', '运动与户外': 'Sports at outdoor' }
+    categoryNames: { '保健': 'Kalusugan', '健康保健': 'Kalusugan', '宠物用品': 'Pet supplies', '厨房餐饮': 'Kusina at kainan', '儿童时尚': 'Moda ng bata', '工具五金': 'Tools at hardware', '家具': 'Muwebles', '家用电器': 'Home appliances', '家用纺织': 'Home textiles', '家装建材': 'Home improvement', '居家日用': 'Mga gamit sa bahay', '美妆个护': 'Beauty at personal care', '美妆与个护': 'Beauty at personal care', '母婴用品': 'Ina at sanggol', '男士内衣': 'Panlalaking underwear', '女士内衣': 'Pambabaeng underwear', '女装与女士内衣': 'Damit at underwear ng babae', '汽车与摩托车': 'Sasakyan at motorsiklo', '食品饮料': 'Pagkain at inumin', '手机数码': 'Mobile at electronics', '手机与数码': 'Mobile at electronics', '箱包': 'Bag', '鞋靴': 'Sapatos', '运动户外': 'Sports at outdoor', '运动与户外': 'Sports at outdoor' },
+    secondaryCategoryNames: secondaryCategoryNames.fil
   },
   en: {
     title: 'Philippines Product Selection', products: 'products', merchants: 'stores', fromMerchants: 'From',
@@ -34,7 +98,8 @@ const translations = {
     loadMore: 'Show more', seller: 'Store', row: 'Product ID', allCategories: 'All categories', allSubcategories: 'All subcategories',
     rating: 'Rating', sales: 'Sold', easyProduct: 'Easy product access', requestSample: 'Request sample', addLink: 'Add link',
     linkUnavailable: 'Link unavailable', unknownProduct: 'Unnamed product', unknownShop: 'Unknown store', close: 'Close',
-    categoryNames: { '保健': 'Health', '健康保健': 'Health', '宠物用品': 'Pet Supplies', '厨房餐饮': 'Kitchen & Dining', '儿童时尚': 'Kids Fashion', '工具五金': 'Tools & Hardware', '家具': 'Furniture', '家用电器': 'Home Appliances', '家用纺织': 'Home Textiles', '家装建材': 'Home Improvement', '居家日用': 'Home & Daily Essentials', '美妆个护': 'Beauty & Personal Care', '美妆与个护': 'Beauty & Personal Care', '母婴用品': 'Mother & Baby', '男士内衣': "Men's Underwear", '女士内衣': "Women's Underwear", '女装与女士内衣': "Women's Fashion & Underwear", '汽车与摩托车': 'Automotive & Motorcycle', '食品饮料': 'Food & Beverages', '手机数码': 'Mobile & Electronics', '手机与数码': 'Mobile & Electronics', '箱包': 'Bags', '鞋靴': 'Shoes', '运动户外': 'Sports & Outdoors', '运动与户外': 'Sports & Outdoors' }
+    categoryNames: { '保健': 'Health', '健康保健': 'Health', '宠物用品': 'Pet Supplies', '厨房餐饮': 'Kitchen & Dining', '儿童时尚': 'Kids Fashion', '工具五金': 'Tools & Hardware', '家具': 'Furniture', '家用电器': 'Home Appliances', '家用纺织': 'Home Textiles', '家装建材': 'Home Improvement', '居家日用': 'Home & Daily Essentials', '美妆个护': 'Beauty & Personal Care', '美妆与个护': 'Beauty & Personal Care', '母婴用品': 'Mother & Baby', '男士内衣': "Men's Underwear", '女士内衣': "Women's Underwear", '女装与女士内衣': "Women's Fashion & Underwear", '汽车与摩托车': 'Automotive & Motorcycle', '食品饮料': 'Food & Beverages', '手机数码': 'Mobile & Electronics', '手机与数码': 'Mobile & Electronics', '箱包': 'Bags', '鞋靴': 'Shoes', '运动户外': 'Sports & Outdoors', '运动与户外': 'Sports & Outdoors' },
+    secondaryCategoryNames: secondaryCategoryNames.en
   },
   zh: {
     title: '菲律宾选品', products: '款商品', merchants: '个商家', fromMerchants: '来自',
@@ -84,7 +149,7 @@ function parseCommission(commStr) {
 
 function localizedCategory(value, t) {
   if (!value) return '';
-  return t.categoryNames?.[value] || value;
+  return t.categoryNames?.[value] || t.secondaryCategoryNames?.[value] || value;
 }
 
 function isEasyProduct(product) {
@@ -536,7 +601,7 @@ function App() {
       .filter(product => product.category_level_1 === selectedCategory)
       .map(product => product.category_level_2)
       .filter(Boolean))]
-      .sort((a, b) => a.localeCompare(b, locale));
+      .sort((a, b) => localizedCategory(a, t).localeCompare(localizedCategory(b, t), locale));
   }, [products, selectedCategory, locale]);
 
   const filteredProducts = useMemo(() => {
@@ -551,7 +616,8 @@ function App() {
         p.sheet_name.toLowerCase().includes(q) ||
         p.category_level_1?.toLowerCase().includes(q) ||
         p.category_level_2?.toLowerCase().includes(q) ||
-        localizedCategory(p.category_level_1, t).toLowerCase().includes(q)
+        localizedCategory(p.category_level_1, t).toLowerCase().includes(q) ||
+        localizedCategory(p.category_level_2, t).toLowerCase().includes(q)
       );
     }
 
@@ -691,7 +757,7 @@ function App() {
               onChange={event => setSelectedSubcategory(event.target.value)}
             >
               <option value="">{t.allSubcategories}</option>
-              {subcategoryOptions.map(value => <option key={value} value={value}>{value}</option>)}
+              {subcategoryOptions.map(value => <option key={value} value={value}>{localizedCategory(value, t)}</option>)}
             </select>
           </div>
         </div>
