@@ -317,9 +317,7 @@ function ProductCard({ product, onClick, index, t, showRow = false }) {
         <ProductAttributes product={product} compact t={t} />
         <div className="product-bottom">
           <div className="product-price">{product.price}</div>
-          <div className="go-btn">
-            <IconArrowRight />
-          </div>
+          <div className="go-btn" aria-hidden="true">Link-&gt;</div>
         </div>
       </div>
     </div>
